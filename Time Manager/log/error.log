@@ -1,0 +1,40 @@
+{"url":"/meetings/","query":{},"name":"Cumpara paine","username":"leo","level":"error","message":"body is not defined","timestamp":"2021-03-18 19:03:48"}
+{"url":"/meetings/","query":{},"name":"Cumpara paine","username":"leo","level":"error","message":"body is not defined","timestamp":"2021-03-18 19:03:51"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"Invalid from: expected a number.","timestamp":"2021-03-18 19:26:11"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"Invalid from: expected a number.","timestamp":"2021-03-18 19:26:24"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"Invalid from: expected a number.","timestamp":"2021-03-18 19:26:36"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"Invalid from: expected a number.","timestamp":"2021-03-18 19:26:55"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"hits is not defined","timestamp":"2021-03-18 19:29:31"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"hits is not defined","timestamp":"2021-03-18 19:29:33"}
+{"url":"/meetings/user?username=leo","query":{"username":"leo"},"level":"error","message":"hits is not defined","timestamp":"2021-03-18 19:29:38"}
+{"url":"/tasks","query":{},"level":"error","message":"Unexpected token } in JSON at position 27","timestamp":"2021-03-25 20:54:34"}
+{"url":"/tasks","query":{},"level":"error","message":"Unexpected token ; in JSON at position 24","timestamp":"2021-03-29 14:22:16"}
+{"url":"/tasks/alltasks","query":{},"level":"error","message":"[parsing_exception] unknown query [matchAll] did you mean any of [match_all, match]?, with { line=1 & col=22 }","timestamp":"2021-03-31 20:57:29"}
+{"url":"/tasks/alltasks","query":{},"level":"error","message":"[parsing_exception] unknown query [matchAll] did you mean any of [match_all, match]?, with { line=1 & col=22 }","timestamp":"2021-03-31 20:58:06"}
+{"url":"/tasks/alltasks","query":{},"level":"error","message":"[parsing_exception] unknown query [matchAll] did you mean any of [match_all, match]?, with { line=1 & col=22 }","timestamp":"2021-03-31 20:59:30"}
+{"url":"/tasks/delete_id?id=d1WYZXgByBpUXAGjAUCG","query":{"id":"d1WYZXgByBpUXAGjAUCG"},"level":"error","message":"es.search.deleteIdTask is not a function","timestamp":"2021-03-31 21:39:44"}
+{"url":"/tasks/d1WYZXgByBpUXAGjAUCG","query":{},"level":"error","message":"Not Found","timestamp":"2021-03-31 22:01:43"}
+{"url":"/tasks/eVWdZXgByBpUXAGjykBl/state/inprogress","query":{},"level":"error","message":"appConfig is not defined","timestamp":"2021-04-08 22:32:26"}
+{"url":"/tasks/count/state?state=inprogress&username=Vlad","query":{"state":"inprogress","username":"Vlad"},"level":"error","message":"[parsing_exception] [match] query doesn't support multiple fields, found [username] and [state], with { line=1 & col=46 }","timestamp":"2021-04-14 12:53:17"}
+{"url":"/tasks/count/state?state=inprogress&username=Vlad","query":{"state":"inprogress","username":"Vlad"},"level":"error","message":"[parsing_exception] [match] query doesn't support multiple fields, found [username] and [state], with { line=1 & col=46 }","timestamp":"2021-04-14 12:54:32"}
+{"url":"/tasks/count/state?state=inprogress&username=Vlad","query":{"state":"inprogress","username":"Vlad"},"level":"error","message":"[parsing_exception] [match] query doesn't support multiple fields, found [username] and [state], with { line=1 & col=46 }","timestamp":"2021-04-14 12:55:06"}
+{"url":"/tasks/count/state?state=inprogress&username=Vlad","query":{"state":"inprogress","username":"Vlad"},"level":"error","message":"[parsing_exception] [match] query doesn't support multiple fields, found [username] and [state], with { line=1 & col=46 }","timestamp":"2021-04-14 12:56:12"}
+{"url":"/tasks/","query":{},"level":"error","message":"Unexpected string in JSON at position 27","timestamp":"2021-04-15 23:03:54"}
+{"url":"/tasks/user","query":{},"level":"error","message":"[parsing_exception] No text specified for text query, with { line=1 & col=20 }","timestamp":"2021-04-19 17:44:26"}
+{"url":"/tasks/user","query":{},"level":"error","message":"[parsing_exception] No text specified for text query, with { line=1 & col=20 }","timestamp":"2021-04-19 17:44:33"}
+{"url":"/tasks/user","query":{},"level":"error","message":"[parsing_exception] No text specified for text query, with { line=1 & col=20 }","timestamp":"2021-04-19 17:45:12"}
+{"url":"/tasks/user","query":{},"level":"error","message":"[parsing_exception] No text specified for text query, with { line=1 & col=20 }","timestamp":"2021-04-19 17:45:19"}
+{"url":"/tasks/user","query":{},"level":"error","message":"[parsing_exception] No text specified for text query, with { line=1 & col=20 }","timestamp":"2021-04-19 17:46:15"}
+{"url":"/tasks/user","query":{},"level":"error","message":"userTasks.hits.map is not a function","timestamp":"2021-04-19 17:46:42"}
+{"url":"/meetings/","query":{},"level":"error","message":"Unexpected string in JSON at position 31","timestamp":"2021-04-19 19:53:20"}
+{"url":"/meetings/%22sywN63gBnrUCV7cPeOyS%22","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 19:55:33"}
+{"url":"/meetings/id:%22sywN63gBnrUCV7cPeOyS%22","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 19:55:56"}
+{"url":"/meetings/%22sywN63gBnrUCV7cPeOyS%22","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 19:56:08"}
+{"url":"/meetings/sywN63gBnrUCV7cPeOyS","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 19:56:18"}
+{"url":"/meetings/sywN63gBnrUCV7cPeOyS","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 20:39:08"}
+{"url":"/meetings/%22sywN63gBnrUCV7cPeOyS%22","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 20:39:18"}
+{"url":"/meetings/","query":{},"level":"error","message":"Unexpected token } in JSON at position 34","timestamp":"2021-04-19 20:52:12"}
+{"url":"/meetings/tyxG63gBnrUCV7cPZ-zA/state/ongoing","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 20:59:36"}
+{"url":"/meetings/tyxG63gBnrUCV7cPZ-zA/state/ongoing","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 21:02:37"}
+{"url":"/meetings/sywN63gBnrUCV7cPeOyS","query":{},"level":"error","message":"Unable to build a path with those params. Supply at least index, id","timestamp":"2021-04-19 21:04:44"}
+{"url":"/meetings/","query":{},"name":"Afaceri4","startDate":"2021-05-04T13:00:00.000Z","duration":30,"participants":["Vladut"],"username":"Leo","state":"created","level":"error","message":"[mapper_parsing_exception] failed to parse field [startDate] of type [date] in document with id 'uCxV63gBnrUCV7cPmOyf'. Preview of field's value: '2021-05-04T13:00:00.000Z'","timestamp":"2021-04-19 21:12:38"}
