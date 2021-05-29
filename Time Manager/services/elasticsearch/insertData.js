@@ -5,6 +5,7 @@ const insertDoc = async function (indexName, data) {
   return await esClient.index({
     index: indexName,
     body: data,
+    refresh: true
   });
 };
 
@@ -12,7 +13,7 @@ const insertMeeting = async function(meeting) {
   return await insertDoc(appConfig.ES_CLIENT.INDEXES.MEETINGS_INDEX, meeting)
 }
 
-const insertTask = async function(task) {
+async function insertTask(task) {
   return await insertDoc(appConfig.ES_CLIENT.INDEXES.TASKS_INDEX, task)
 }
 

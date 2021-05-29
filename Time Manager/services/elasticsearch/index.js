@@ -1,4 +1,4 @@
-const client = require("./client");
+const esClient = require("./client");
 const createIndex = require("./createIndex");
 const deleteIndex = require("./deleteIndex");
 const insertData = require("./insertData");
@@ -13,11 +13,10 @@ async function checkIfIndexExistsOrCreateIt(indexesKeys) {
     const index = appConfig.ES_CLIENT.INDEXES[indexKey]
     return {
       index,
-      exist: await client.indices.exists({ index})
+      exist: await esClient.indices.exists({ index})
     }
   })
   const indexExists = await Promise.all(indexesData)
-  console.log(indexExists);
   const data = indexExists.map(async ({ index, exist }) => {
     if (!exist) {
       const createdIndex = await createIndex(index);

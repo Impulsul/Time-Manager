@@ -22,34 +22,47 @@
           to="/auth"
           md-label="Log out"
           md-icon="home"
+          @click="logout"
         ></md-bottom-bar-item>
       </md-bottom-bar>
-      <md-subheader style="display: inline-block; margin-top: 35px"
+      <md-subheader style="display: block; margin-top: 35px; width: 100%"
         >Tasks</md-subheader
       >
-      <div v-for="task in tasks" :key="task.id">
-        <md-card md-with-hover>
+      <div
+        v-for="task in tasks"
+        :key="task.id"
+        style="display: block; width: 100%"
+      >
+        <md-card md-with-hover :class="generateClass(task.state)">
           <md-ripple>
             <md-card-header>
               <div class="md-title">{{ task.name }}</div>
-              <div class="md-subhead">{{ task.start }}-{{ task.end }}</div>
+              <div class="md-subhead">
+                {{ task.startDate }}-{{ task.endDate }}
+              </div>
             </md-card-header>
 
             <md-card-content>
               {{ task.description }}
             </md-card-content>
-
+            <md-card-actions class="inProgress">
+              <md-button @click="inProgressTask($event, task.id)"
+                >In Progress</md-button
+              >
+            </md-card-actions>
+            <md-card-actions class="done">
+              <md-button @click="doneTask($event, task.id)">Done</md-button>
+            </md-card-actions>
             <md-card-actions>
-              <md-button>Delete</md-button>
+              <md-button @click="deleteTask($event, task.id)">Delete</md-button>
             </md-card-actions>
           </md-ripple>
         </md-card>
       </div>
-      <md-subheader style="display: inline-block; margin-top: 35px">Meetings</md-subheader>
-      <div
-        v-for="meeting in meetings"
-        :key="meeting.id"
+      <md-subheader style="display: block; margin-top: 35px; width: 100%"
+        >Meetings</md-subheader
       >
+      <div v-for="meeting in meetings" :key="meeting.id" style="width: 100%">
         <md-card md-with-hover>
           <md-ripple>
             <md-card-header>
@@ -74,57 +87,31 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import tasksService from "../services/tasks";
 export default {
   name: "TableSort",
   data: () => ({
-    tasks: [
-      {
-        id: 1,
-        name: "Spala rufe",
-        description: "ia paine fa acum ca mor de foame",
-        start: "la 7",
-        end: "la 7:10",
-      },
-      {
-        id: 2,
-        name: "Cumpara lapte",
-        description: "ia paine fa",
-        start: "la 7",
-        end: "la 7:10",
-      },
-      {
-        id: 3,
-        name: "Cumpara lapte",
-        description: "ia paine fa",
-        start: "la 7",
-        end: "la 7:10",
-      },
-    ],
-    meetings: [
-      {
-        id: 11,
-        name: "Spala rufe",
-        description: "ia paine fa acum ca mor de foame",
-        start: "la 7",
-        end: "la 7:10",
-      },
-      {
-        id: 12,
-        name: "Cumpara lapte",
-        description: "ia paine fa",
-        start: "la 7",
-        end: "la 7:10",
-      },
-      {
-        id: 13,
-        name: "Cumpara lapte",
-        description: "ia paine fa",
-        start: "la 7",
-        end: "la 7:10",
-      },
-    ],
+    tasks: [],
+    meetings: [],
   }),
+  async mounted() {
+    tasksService
+      .getUsersTasks()
+      .then((response) => {
+        this.tasks = response.data;
+      })
+      .catch(() => (this.tasks = []));
+  },
   methods: {
+    ...mapActions(["simpleLogout"]),
+    generateClass(state) {
+      if (state == "inProgress") {
+        return "md-primary";
+      } else if (state == "done") {
+        return "md-accent";
+      } else return "";
+    },
     onSelect(items) {
       this.selected = items;
     },
@@ -136,6 +123,36 @@ export default {
       }
 
       return `${count} user${plural} selected`;
+    },
+    logout() {
+      this.simpleLogout();
+    },
+    async deleteTask(e, id) {
+      e.preventDefault();
+      await tasksService.deleteTask(id);
+      const index = this.tasks.findIndex((obj) => obj.id == id);
+      if (index !== -1) this.tasks.splice(index, 1);
+    },
+    inProgressTask(e, id) {
+      e.preventDefault();
+      tasksService.updateTask(id, "inProgress").then(() => {
+        this.tasks.forEach((task) => {
+          if (task.id == id) {
+            task.state = "inProgress";
+          }
+        });
+      });
+    },
+
+    doneTask(e, id) {
+      e.preventDefault();
+      tasksService.updateTask(id, "done").then(() => {
+        this.tasks.forEach((task) => {
+          if (task.id == id) {
+            task.state = "done";
+          }
+        });
+      });
     },
   },
 };
@@ -157,6 +174,10 @@ md-bottom-bar-item {
 }
 .md-title {
   margin-left: 45%;
+}
+.inProgress,
+.done {
+  float: left;
 }
 .md-card {
   width: 30%;

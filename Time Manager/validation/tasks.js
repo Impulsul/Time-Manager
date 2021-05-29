@@ -13,13 +13,17 @@ function createTask() {
             min: 1,
             max: 100
         }),
-        body("username", "Task must have an owner").isString({
+        body("startDate", "Task must have a start date ").isString({
+            min: 1,
+            max: 100
+        }),
+        body("endDate", "Task must have an end date").isString({
             min: 1,
             max: 100
         })
     ];
 }
-const state_states = ["created", "inprogress", "done"]
+const state_states = ["created", "inProgress", "done"]
 
 function setTaskState() {
     return [

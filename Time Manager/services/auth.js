@@ -13,7 +13,6 @@ async function users() {
 
 async function asyncAuthorizer(username, password, cb) {
     const esUsers = await users()
-
     if (esUsers[username] == undefined) {
         return cb(null, false)
     }

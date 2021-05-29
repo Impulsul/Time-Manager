@@ -5,10 +5,18 @@ import store from "./store";
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import axios from "axios";
 
 Vue.config.productionTip = false
 Vue.config.ignoredElements = [/^sh-/];
+Vue.prototype.$http = axios;
+
 Vue.use(VueMaterial)
+
+const token = localStorage.getItem("token");
+if (token) {
+  Vue.prototype.$http.defaults.headers.common["Authorization"] = token;
+}
 
 new Vue({
   router,

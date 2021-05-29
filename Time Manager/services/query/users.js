@@ -1,6 +1,5 @@
 function getAllUsers (){
     return {
-        _source: ["username"],
         query: {
             match_all: {}
         }

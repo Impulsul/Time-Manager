@@ -5,6 +5,8 @@ const validation = require("../validation");
 const ApiError = require("../error/error");
 const es = require("../services/elasticsearch");
 const appConfig = require("../config");
+const { cosnoleL} = require("../services/logging/logging");
+const { TaskDOB } = require("../repository/task");
 
 
 
@@ -12,17 +14,12 @@ router.post(
     "/",
     [validation.tasks.createTask(), validation.validate()],
     async (req, res, next) => {
-        const { name, username, description } = req.body;
-        const task = {
-            name,
-            username,
-            description: description != undefined ? description : "",
-            state: "created",
-        }
+        const { name,description, startDate, endDate } = req.body;
+        const username = req.auth.user
+        const taskDOB = new TaskDOB(name, username, description, startDate, endDate)
         try {
-            console.log(task);
-
-            const taskInserted = await es.insertData.insertTask(task);
+            const taskInserted = await es.insertData.insertTask(taskDOB.getTask());
+            cosnoleL.info('Task created taskInserted')
             res.json(taskInserted);
         }
         catch (err) {
@@ -32,7 +29,7 @@ router.post(
 );
 
 router.get(
-    "/user",
+    "/",
     [],
     async (req, res, next) => {
       
@@ -105,7 +102,6 @@ router.get(
     "/count/state", [validation.tasks.countTasksByState(), validation.validate()],
     async (req, res, next) => {
         const { state, username } = req.query
-        console.log(req.query)
         try {
             const count  = await es.count.countTaskForState(state, username)
             res.json(count)

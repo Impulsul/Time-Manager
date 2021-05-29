@@ -30,7 +30,6 @@ function initServer(app) {
 
   const meetingsRouter = require("./controller/meetings");
   const tasksRouter = require("./controller/tasks");
-
   const authRouter = require("./controller/auth");
 
   app.use("/auth", authRouter);

@@ -6,4 +6,4 @@ const esClient = new es.Client({
 	log: ['error', 'warning']
 });
 
-module.exports = esClient;
+module.exports =  esClient ;

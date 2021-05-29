@@ -19,15 +19,15 @@ function createRequestLogger(transports) {
       winston.format.json(),
       winston.format.timestamp(),
       winston.format.printf(info => {
-        const {req, res} = info.meta;
-        const {level, timestamp} = info
+        const { req, res } = info.meta;
+        const { level, timestamp } = info
         const properties = {
           url: req.url,
           query: req.query,
           ...req.params,
           ...req.body
         };
-        const infoMessage =  `${timestamp} [${level}]:[${req.method}] ${JSON.stringify(properties)}`
+        const infoMessage = `${timestamp} [${level}]:[${req.method}] ${JSON.stringify(properties)}`
         console.log(infoMessage)
         return infoMessage;
       })
@@ -38,22 +38,35 @@ function createRequestLogger(transports) {
 }
 
 const logger = winston.createLogger({
-    level: winston.config.syslog,    
-    transports: [
-      consoleLogger,
-      remoteLogger
-    ],
-    format: winston.format.combine(
-      winston.format.timestamp({
-        format: "YYYY-MM-DD HH:mm:ss",
-      }),
-      winston.format.json(),
-    ),
-    exitOnError: false
-  })
+  level: winston.config.syslog,
+  transports: [
+    consoleLogger,
+    remoteLogger
+  ],
+  format: winston.format.combine(
+    winston.format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    winston.format.json(),
+  ),
+  exitOnError: false
+})
 
+const cosnoleL = winston.createLogger({
+  exitOnError: false,
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    winston.format.json(),
+  ),
+  transports: [consoleLogger]
+})
 
-module.exports = {
-  requestLogger: expressWinston.logger(createRequestLogger([consoleLogger])),
-  logger: logger
-}
+  module.exports = {
+    requestLogger: expressWinston.logger(createRequestLogger([consoleLogger])),
+    logger: logger,
+    cosnoleL
+  }
