@@ -1,26 +1,26 @@
 import axios from "axios";
 import store from "../store";
 
-async function createMeetings(payload) {
+async function createMeeting(payload) {
   return axios.post(store.getters.backendURL + "meetings/", {
     ...payload
   });
 }
 
-async function getUsersMeetings() {
+async function getUsersMeeting() {
   return axios.get(store.getters.backendURL + "meetings/");
 }
 
-async function deleteMeetings(id) {
+async function deleteMeeting(id) {
   return axios.delete(store.getters.backendURL + "meetings/" + id);
 }
 
-async function updateTask(id, state) {
-  return axios.put(store.getters.backendURL + 'tasks/' + id +'/state/' + state )
+async function updateMeeting(id, state) {
+  return axios.put(store.getters.backendURL + 'meetings/' + id +'/state/' + state )
 }
 export default {
-  createTask,
-  getUsersTasks,
-  deleteTask,
-  updateTask
+  createMeeting,
+  getUsersMeeting,
+  deleteMeeting,
+  updateMeeting
 };

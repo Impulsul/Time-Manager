@@ -1,8 +1,9 @@
 import task from './tasks'
-// import meetings from './meetings'
+import meeting from './meetings'
 import loginService from './login-service'
 
 export default {
     task,
-    loginService
+    loginService,
+    meeting
 };

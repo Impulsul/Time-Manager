@@ -32,16 +32,27 @@
         <md-card-content>
           <div class="md-layout-item md-small-size-100">
             <md-field>
-              <label for="task-name">Name</label>
-              <md-input name="task-name" id="task-name" v-model="taskName" />
+              <label for="meeting-name">Name</label>
+              <md-input name="meeting-name" id="meeting-name" v-model="meetingName" />
             </md-field>
 
             <div class="md-layout-item md-small-size-100">
               <md-field>
+               <label for="participants">Participants</label>
+                    <!-- <md-select v-model="participants" multiple>
+                        <md-option value="Kid">Kid</md-option>
+                        <md-option value="dd/MM/yyyy">dd/MM/yyyy</md-option>
+                        <md-option value="MM/dd/yyyy">MM/dd/yyyy</md-option>
+                    </md-select> -->
+                    <md-input name="participants" id="participants" v-model="participants" />
+              </md-field>
+            </div>
+              <div class="md-layout-item md-small-size-100">
+            <md-field>
                 <label for="last-name">Description</label>
                 <md-textarea v-model="description"></md-textarea>
               </md-field>
-            </div>
+              </div>
           </div>
 
           <div class="md-layout-item md-small-size-100">
@@ -61,7 +72,7 @@
         </md-card-content>
 
         <md-card-actions>
-          <md-button type="submit" class="md-primary" @click="createTask">Create Meeting</md-button>
+          <md-button type="submit" class="md-primary" @click="createMeeting">Create Meeting</md-button>
         </md-card-actions>
       </md-card>
   </div>
@@ -69,13 +80,14 @@
 
 <script>
 import { mapActions } from "vuex";
-import tasksService from "../services/tasks";
+import meetingsService from "../services/meetings";
 export default {
   name: "Date",
   data: () => ({
-    taskName: "",
+    meetingName: "",
     description: "",
-    startDate:null,
+    participants: "",
+    startDate: null,
     endDate: null,
     selectedDate: null,
     form: {
@@ -88,16 +100,19 @@ export default {
     logout() {
       this.simpleLogout();
     },
-    createTask() {
-      tasksService.createTask({
-        name: this.taskName,
-        description: this.description,
-        startDate: this.startDate,
-        endDate: this.endDate
-      }).then(() => {
-         this.$router.push("/")
-      })
-    }
+    createMeeting() {
+      meetingsService
+        .createMeeting({
+          name: this.meetingName,
+          description: this.description,
+          participants: this.participants,
+          startDate: this.startDate,
+          endDate: this.endDate,
+        })
+        .then(() => {
+          this.$router.push("/");
+        });
+    },
   },
 };
 </script>

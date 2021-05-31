@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form novalidate class="md-layout">
+    <form novalidate class="md-layout" @submit.prevent="registerUser">
       <md-card >
         <md-card-header>
           <div class="md-title">Register</div>
@@ -14,17 +14,18 @@
               name="email"
               id="email"
               autocomplete="email"
+              v-model="username"
             />
             <span class="md-error">The email is required</span>
             <span class="md-error">Invalid email</span>
           </md-field>
           <md-field>
             <label>Password </label>
-            <md-input type="password"></md-input>
+            <md-input type="password" v-model="password"></md-input>
           </md-field>
             <md-field>
             <label>Re-type Password </label>
-            <md-input type="password"></md-input>
+            <md-input type="password" v-model="rePassword"></md-input>
           </md-field>
         </md-card-content>
 
@@ -38,7 +39,31 @@
 </template>
 
 <script>
-export default {};
+import {mapActions} from 'vuex'
+export default {  
+  name: "Register",
+  data() {
+    return {
+      username: "",
+      password: "",
+      rePassword:"",
+    };
+  },
+  methods: {
+    ...mapActions(["register"]),
+    registerUser(e) {
+      e.preventDefault();
+      
+      this.register({
+        username: this.username,
+        password: this.password,
+        rePassword: this.rePassword
+      }).then(() => {
+        this.$router.push("/")
+        });
+    },
+  },
+};
 </script>
 
 <style>

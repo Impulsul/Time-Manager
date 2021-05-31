@@ -63,7 +63,7 @@
         >Meetings</md-subheader
       >
       <div v-for="meeting in meetings" :key="meeting.id" style="width: 100%">
-        <md-card md-with-hover>
+        <md-card md-with-hover :class="generateClass(meeting.state)">
           <md-ripple>
             <md-card-header>
               <div class="md-title">{{ meeting.name }}</div>
@@ -75,10 +75,22 @@
             <md-card-content>
               {{ meeting.description }}
             </md-card-content>
+             <md-card-content>
+              {{ task.description }}
+            </md-card-content>
 
-            <md-card-actions>
-              <md-button>Delete</md-button>
+            <md-card-actions class="inProgress">
+              <md-button @click="inProgressMeeting($event, meeting.id)"
+                >On Going</md-button
+              >
             </md-card-actions>
+            <md-card-actions class="done">
+              <md-button @click="doneMeeting($event, meeting.id)">Finished</md-button>
+            </md-card-actions>
+            <md-card-actions>
+              <md-button @click="deleteMeeting($event, meeting.id)">Delete</md-button>
+            </md-card-actions>
+
           </md-ripple>
         </md-card>
       </div>
@@ -89,6 +101,7 @@
 <script>
 import { mapActions } from "vuex";
 import tasksService from "../services/tasks";
+import meetingsService from "../services/meetings";
 export default {
   name: "TableSort",
   data: () => ({
@@ -102,13 +115,16 @@ export default {
         this.tasks = response.data;
       })
       .catch(() => (this.tasks = []));
+    meetingsService.getUsersMeeting().then((response) => {
+      this.meetings = response.data;
+    }).catch(() => (this.meetings = []));
   },
   methods: {
     ...mapActions(["simpleLogout"]),
     generateClass(state) {
-      if (state == "inProgress") {
+      if (state == "inProgress" || state == "ongoing") {
         return "md-primary";
-      } else if (state == "done") {
+      } else if (state == "done" || state == "finished") {
         return "md-accent";
       } else return "";
     },
@@ -150,6 +166,35 @@ export default {
         this.tasks.forEach((task) => {
           if (task.id == id) {
             task.state = "done";
+          }
+        });
+      });
+    },
+  
+
+      async deleteMeeting(e, id) {
+      e.preventDefault();
+      await meetingsService.deleteMeeting(id);
+      const index = this.meetings.findIndex((obj) => obj.id == id);
+      if (index !== -1) this.meetings.splice(index, 1);
+    },
+    inProgressMeeting(e, id) {
+      e.preventDefault();
+      meetingsService.updateMeeting(id, "ongoing").then(() => {
+        this.meetings.forEach((meeting) => {
+          if (meeting.id == id) {
+            meeting.state = "ongoing";
+          }
+        });
+      });
+    },
+
+    doneMeeting(e, id) {
+      e.preventDefault();
+      meetingsService.updateMeeting(id, "finished").then(() => {
+        this.meetings.forEach((meeting) => {
+          if (meeting.id == id) {
+            meeting.state = "finished";
           }
         });
       });
