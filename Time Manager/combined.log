@@ -1,0 +1,5 @@
+{"message":"User was auth","level":"info","service":"user-service"}
+{"message":"Task created taskInserted","level":"info","service":"user-service","timestamp":"2021-06-01 18:49:47"}
+{"message":"Task created [object Object]","level":"info","service":"user-service","timestamp":"2021-06-01 18:51:16"}
+{"message":"Task created {\"_index\":\"tasks\",\"_type\":\"_doc\",\"_id\":\"gjhFyHkBTqo7u63y8oHc\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":true,\"_shards\":{\"total\":2,\"successful\":1,\"failed\":0},\"_seq_no\":205,\"_primary_term\":5}","level":"info","service":"user-service","timestamp":"2021-06-01 18:51:38"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 18:52:21"}

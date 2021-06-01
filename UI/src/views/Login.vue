@@ -52,7 +52,6 @@ export default {
     ...mapActions(["login"]),
     loginUser(e) {
       e.preventDefault();
-      
       this.login({
         username: this.username,
         password: this.password

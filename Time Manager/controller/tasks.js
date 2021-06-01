@@ -5,7 +5,7 @@ const validation = require("../validation");
 const ApiError = require("../error/error");
 const es = require("../services/elasticsearch");
 const appConfig = require("../config");
-const { cosnoleL} = require("../services/logging/logging");
+const { logger} = require("../services/logging/logging");
 const { TaskDOB } = require("../repository/task");
 
 
@@ -19,7 +19,7 @@ router.post(
         const taskDOB = new TaskDOB(name, username, description, startDate, endDate)
         try {
             const taskInserted = await es.insertData.insertTask(taskDOB.getTask());
-            cosnoleL.info('Task created taskInserted')
+            logger.info(`New task was inserted`)
             res.json(taskInserted);
         }
         catch (err) {
@@ -43,7 +43,7 @@ router.get(
                     ...hit._source
                 }
             })
-          
+            logger.info(`Get all tasks`)
             res.json(task)
         } catch (err) {
             next(err);
@@ -75,6 +75,7 @@ router.delete(
         const { id } = req.params
         try {
             await es.deleteIndex.deleteTaskbyId(id)
+            logger.info(`Delete the task by id`)
             res.status(202).send()
         } catch (err) {
             next(err);
@@ -90,7 +91,7 @@ router.get(
         const { username } = req.query
         try {
             const { count: count } = await es.count.countTaskForUser(username)
-
+            logger.info(`Count the number of tasks`)
             res.json(count)
         } catch (err) {
             next(err);

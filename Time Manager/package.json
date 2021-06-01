@@ -23,9 +23,9 @@
     "winston-express-middleware": "^0.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
-    "jest": "24.1.0",
+    "jest": "^24.1.0",
     "jest-junit": "6.3.0",
+    "nodemon": "^2.0.4",
     "supertest": "3.4.2"
   },
   "author": "",

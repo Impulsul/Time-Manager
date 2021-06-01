@@ -7,6 +7,11 @@ async function createUser(payload) {
   });
 }
 
+async function getAllUsers() {
+  return axios.get(store.getters.backendURL + 'users/all/')
+}
+
 export default {
     createUser,
+    getAllUsers
   };

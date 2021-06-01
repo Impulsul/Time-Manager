@@ -38,35 +38,28 @@ function createRequestLogger(transports) {
 }
 
 const logger = winston.createLogger({
-  level: winston.config.syslog,
-  transports: [
-    consoleLogger,
-    remoteLogger
-  ],
-  format: winston.format.combine(
-    winston.format.timestamp({
-      format: "YYYY-MM-DD HH:mm:ss",
-    }),
-    winston.format.json(),
-  ),
-  exitOnError: false
-})
-
-const cosnoleL = winston.createLogger({
-  exitOnError: false,
   level: 'info',
   format: winston.format.combine(
-    winston.format.colorize(),
     winston.format.timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
     winston.format.json(),
   ),
-  transports: [consoleLogger]
-})
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    //
+    // - Write all logs with level `error` and below to `error.log`
+    // - Write all logs with level `info` and below to `combined.log`
+    //
+    new winston.transports.File({ filename: 'log/error.log', level: 'error' }),
+    new winston.transports.Console({
+      json: true
+    }),
+    new winston.transports.File({ filename: 'log/combined.log' }),
+  ],
+});
 
-  module.exports = {
-    requestLogger: expressWinston.logger(createRequestLogger([consoleLogger])),
-    logger: logger,
-    cosnoleL
-  }
+module.exports = {
+  requestLogger: expressWinston.logger(createRequestLogger([consoleLogger])),
+  logger: logger
+}

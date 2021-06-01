@@ -2,6 +2,7 @@ import axios from "axios";
 import store from "../store";
 
 async function createMeeting(payload) {
+  console.log(payload)
   return axios.post(store.getters.backendURL + "meetings/", {
     ...payload
   });

@@ -1,0 +1,21 @@
+{"message":"Get all tasks","level":"info","service":"user-service","timestamp":"2021-06-01 19:02:44"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:08:17"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:08:17"}
+{"message":"Delete the task by id","level":"info","service":"user-service","timestamp":"2021-06-01 19:08:17"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:08:17"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:08:17"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:09:37"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:09:37"}
+{"message":"Delete the task by id","level":"info","service":"user-service","timestamp":"2021-06-01 19:09:38"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:09:38"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:09:38"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:15"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:16"}
+{"message":"Delete the task by id","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:16"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:16"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:16"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:40"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:40"}
+{"message":"Delete the task by id","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:40"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:40"}
+{"message":"New task was inserted","level":"info","service":"user-service","timestamp":"2021-06-01 19:10:41"}

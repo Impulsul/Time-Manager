@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form novalidate class="md-layout" @submit.prevent="registerUser">
+    <form novalidate class="md-layout" @submit.prevent="createUser">
       <md-card >
         <md-card-header>
           <div class="md-title">Register</div>
@@ -40,6 +40,8 @@
 
 <script>
 import registerServices from '../services/register'
+import {mapActions} from 'vuex'
+
 export default {  
   name: "Register",
   data() {
@@ -49,13 +51,18 @@ export default {
     };
   },
   methods: {
-    createUser() {
-      registerServices.createUser({
-        name: this.username,
+    ...mapActions(["login"]),
+    async createUser() {
+      await registerServices.createUser({
+        username: this.username,
+        password: this.password
+      })
+      this.login({
+        username: this.username,
         password: this.password
       }).then(() => {
-         this.$router.push("/")
-      })
+        this.$router.push("/")
+        });
     }
   },
 };

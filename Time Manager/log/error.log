@@ -51,3 +51,4 @@
 {"url":"/tasks/","query":{},"name":"Cumpara lapte 4","description":"Cumpara lapte astazi fmm de prost","startDate":"2021-05-27T16:21:15.325Z","endDate":"2021-06-27T16:21:15.325Z","level":"error","message":"consoleLogger.info is not a function","timestamp":"2021-05-27 20:23:46"}
 {"url":"/tasks/","query":{},"name":"Cumpara lapte 4","description":"Cumpara lapte astazi fmm de prost","startDate":"2021-05-27T16:21:15.325Z","endDate":"2021-06-27T16:21:15.325Z","level":"error","message":"consoleLogger.info is not a function","timestamp":"2021-05-27 20:23:48"}
 {"url":"/users/","query":{},"level":"error","message":"Unexpected token u in JSON at position 7","timestamp":"2021-05-31 11:45:59"}
+{"url":"/users","query":{},"level":"error","message":"unsupported charset \"UTF-8\"","timestamp":"2021-06-01 18:12:23"}
