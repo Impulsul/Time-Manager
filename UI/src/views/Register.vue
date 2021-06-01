@@ -25,7 +25,7 @@
           </md-field>
             <md-field>
             <label>Re-type Password </label>
-            <md-input type="password" v-model="rePassword"></md-input>
+            <md-input type="password" ></md-input>
           </md-field>
         </md-card-content>
 
@@ -39,29 +39,24 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import registerServices from '../services/register'
 export default {  
   name: "Register",
   data() {
     return {
       username: "",
       password: "",
-      rePassword:"",
     };
   },
   methods: {
-    ...mapActions(["register"]),
-    registerUser(e) {
-      e.preventDefault();
-      
-      this.register({
-        username: this.username,
-        password: this.password,
-        rePassword: this.rePassword
+    createUser() {
+      registerServices.createUser({
+        name: this.username,
+        password: this.password
       }).then(() => {
-        this.$router.push("/")
-        });
-    },
+         this.$router.push("/")
+      })
+    }
   },
 };
 </script>

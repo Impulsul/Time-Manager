@@ -8,7 +8,7 @@ async function createMeeting(payload) {
 }
 
 async function getUsersMeeting() {
-  return axios.get(store.getters.backendURL + "meetings/");
+  return axios.get(store.getters.backendURL + "meetings/user");
 }
 
 async function deleteMeeting(id) {

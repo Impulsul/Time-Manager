@@ -28,9 +28,7 @@
       <md-subheader style="display: block; margin-top: 35px; width: 100%"
         >Tasks</md-subheader
       >
-      <div
-        v-for="task in tasks"
-        :key="task.id"
+      <div v-for="task in tasks" :key="task.id"
         style="display: block; width: 100%"
       >
         <md-card md-with-hover :class="generateClass(task.state)">
@@ -68,15 +66,12 @@
             <md-card-header>
               <div class="md-title">{{ meeting.name }}</div>
               <div class="md-subhead">
-                {{ meeting.start }}-{{ meeting.end }}
+                {{ meeting.startDate }}
               </div>
             </md-card-header>
 
             <md-card-content>
-              {{ meeting.description }}
-            </md-card-content>
-             <md-card-content>
-              {{ task.description }}
+              {{ meeting.participants }}
             </md-card-content>
 
             <md-card-actions class="inProgress">
@@ -85,12 +80,15 @@
               >
             </md-card-actions>
             <md-card-actions class="done">
-              <md-button @click="doneMeeting($event, meeting.id)">Finished</md-button>
+              <md-button @click="doneMeeting($event, meeting.id)"
+                >Finished</md-button
+              >
             </md-card-actions>
             <md-card-actions>
-              <md-button @click="deleteMeeting($event, meeting.id)">Delete</md-button>
+              <md-button @click="deleteMeeting($event, meeting.id)"
+                >Delete</md-button
+              >
             </md-card-actions>
-
           </md-ripple>
         </md-card>
       </div>
@@ -115,9 +113,12 @@ export default {
         this.tasks = response.data;
       })
       .catch(() => (this.tasks = []));
-    meetingsService.getUsersMeeting().then((response) => {
-      this.meetings = response.data;
-    }).catch(() => (this.meetings = []));
+    meetingsService
+      .getUsersMeeting()
+      .then((response) => {
+        this.meetings = response.data;
+      })
+      .catch(() => (this.meetings = []));
   },
   methods: {
     ...mapActions(["simpleLogout"]),
@@ -170,9 +171,8 @@ export default {
         });
       });
     },
-  
 
-      async deleteMeeting(e, id) {
+    async deleteMeeting(e, id) {
       e.preventDefault();
       await meetingsService.deleteMeeting(id);
       const index = this.meetings.findIndex((obj) => obj.id == id);

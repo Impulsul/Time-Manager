@@ -53,16 +53,16 @@ describe(`Test auth controller`, () => {
                 expect(response.body).toHaveProperty('token')
             });
     });
-    test(`Check for an unauthorised user, it should throw 401, positive case`, async () => {
-        await request(app)
-            .get('/auth')
-            .auth('Leo', 'parola')
-            .expect(200)
-            .then(response => {
-                console.log(response.body)
-                expect(response.body.user.username).toBe("Leo");
-                expect(response.body.message).toBe('User auth');
-                expect(response.body).toHaveProperty('token')
-            });
-    });
+    // test(`Check for an unauthorised user, it should throw 401, positive case`, async () => {
+    //     await request(app)
+    //         .get('/auth')
+    //         .auth('Leo', 'parola')
+    //         .expect(200)
+    //         .then(response => {
+    //             console.log(response.body)
+    //             expect(response.body.user.username).toBe("Leo");
+    //             expect(response.body.message).toBe('User auth');
+    //             expect(response.body).toHaveProperty('token')
+    //         });
+    // });
 })

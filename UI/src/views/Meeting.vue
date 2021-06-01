@@ -54,20 +54,18 @@
               </md-field>
               </div>
           </div>
-
-          <div class="md-layout-item md-small-size-100">
+           <div class="md-layout-item md-small-size-100">
             <md-field>
               <label for="startDate">Start Date</label>
               <md-datepicker v-model="startDate" />
             </md-field>
           </div>
-
-          <div class="md-layout-item md-small-size-100">
+           <div class="md-layout-item md-small-size-100">
             <md-field>
-              <label for="endDate">End Date</label>
-              <md-datepicker v-model="endDate" />
-            </md-field>
-          </div>
+                 <label for="duration">Duration</label>
+                  <md-input name="duration" id="duration" v-model="duration" />
+              </md-field>
+              </div>
 
         </md-card-content>
 
@@ -87,8 +85,8 @@ export default {
     meetingName: "",
     description: "",
     participants: "",
+    duration: "",
     startDate: null,
-    endDate: null,
     selectedDate: null,
     form: {
       hour: null,
@@ -101,18 +99,15 @@ export default {
       this.simpleLogout();
     },
     createMeeting() {
-      meetingsService
-        .createMeeting({
+      meetingsService.createMeeting({
           name: this.meetingName,
-          description: this.description,
           participants: this.participants,
           startDate: this.startDate,
-          endDate: this.endDate,
-        })
-        .then(() => {
-          this.$router.push("/");
-        });
-    },
+          duration: this.duration
+       }).then(() => {
+         this.$router.push("")
+      })
+    }
   },
 };
 </script>
